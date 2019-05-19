@@ -1,0 +1,1 @@
+export const CHECK_VERSION = 'check_version';
