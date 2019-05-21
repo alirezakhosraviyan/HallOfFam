@@ -1,13 +1,15 @@
-import { createStackNavigator } from 'react-navigation';
-import IntroCont from '../components/intro/container/introCont';
-import WelcomeCont from '../components/welcome/container/welcomeCont';
+import { createSwitchNavigator } from 'react-navigation';
+import splash from '../components/splash/container/splashCont';
+import introStack from './navigations/introStack';
+import mainStack from './navigations/mainStack';
 
-export default createStackNavigator(
+export default createSwitchNavigator(
     {
-      intro: IntroCont,
+      splash: splash,
+      introStack: introStack,
+      mainStack: mainStack,
     },
     {
-      initialRouteName: 'intro',
-      header: { visible: false },
+      initialRouteName: 'splash',
     },
 );

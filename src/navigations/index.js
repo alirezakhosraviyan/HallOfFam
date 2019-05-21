@@ -1,4 +1,4 @@
-import wlc from './welcomeNavigator';
+import Entrance from './entrance';
 import { createAppContainer } from 'react-navigation';
 
-export default createAppContainer(wlc)
+export default createAppContainer(Entrance)
