@@ -1,12 +1,12 @@
 import { createSwitchNavigator } from 'react-navigation';
-import IntroCont from '../components/intro/container/introCont';
+import beforeEntranceNavigation from '../navigations/beforEntrance';
 
 export default createSwitchNavigator(
     {
-      intro: IntroCont,
+      beforeEntrance: beforeEntranceNavigation,
     },
     {
-      initialRouteName: 'intro',
+      initialRouteName: 'beforeEntrance',
       header: { visible: false },
     },
 );
