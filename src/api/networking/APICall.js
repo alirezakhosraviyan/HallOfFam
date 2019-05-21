@@ -1,5 +1,5 @@
-const success = type => `${type}_SUCCESS`;
-const fail = type => `${type}_FAIL`;
+const success = type => `${type}_success`;
+const fail = type => `${type}_fail`;
 
 import base_url from '../../api/constants/server';
 
@@ -8,7 +8,7 @@ export const ApiCall = (action, payload) => async (dispatch, getState) => {
   return (false) ?
       setTimeout(
           () =>
-              !payload.expect
+              !payload.test
                   ? dispatch({ type: fail(action.type), response: payload.fail, payload })
                   : dispatch({ type: success(action.type), response: payload.success, payload }),
           1500,
@@ -17,7 +17,6 @@ export const ApiCall = (action, payload) => async (dispatch, getState) => {
         ...action.request,
         timeout: 10000,
         headers: {
-          Authorization: ('token ' + getState().auth.token).trim(),
           'Content-Type': 'application/json',
           ...action.request.headers,
         },
@@ -25,18 +24,11 @@ export const ApiCall = (action, payload) => async (dispatch, getState) => {
         let data = null;
         if (res.status === 200 || res.status === 201) {
           data = await res.json();
+          console.warn(data)
           dispatch({ type: success(action.type), response: data, payload });
-        }else if (res.status === 401){
-          data = await res.json();
-          console.warn(data)
-          // dispatch({ type: 'INIT_PHONE', err: data, payload });
-        }else {
-          data = await res.json();
-          console.warn(data)
-          dispatch({ type: fail(action.type), err: data, payload });
         }
       }).catch(err => {
-        console.warn({ type: fail(action.type), err: err.response.data, payload });
-        dispatch({ type: fail(action.type), err: err.response.data, payload });
+        console.warn({ type: fail(action.type), err: 400, payload });
+        dispatch({ type: fail(action.type),  payload });
       });
 };
