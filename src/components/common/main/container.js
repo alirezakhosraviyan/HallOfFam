@@ -12,17 +12,29 @@ import {
 import {LargeText, MedText} from "../text";
 import {SMALL} from "../../../api/constants/sizes";
 import {LIGHT_PRIMARY, PRIMARY, PRIMARY_TEXT_COLOR, WHITE} from "../../../api/constants/colors";
+import Sound from'react-native-sound';
 
+let alert_s = new Sound('s.mp3', Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.warn(error)
+  }
+})
 
 export const Header =  ({ onLeftButtonPress, title, onRightButtonPress}) => {
   return(
   <View style={header_styles.mainContainer}>
     <View style={header_styles.leftContainer}>
       <TouchableOpacity onLongPress={()=>{
-        BackHandler.exitApp();
+        alert_s.play((success)=>{
+          if (!success) {
+            console.warn('Sound is not available')
+          }
+        })
         if(Platform.OS === 'ios'){
           console.warn('This feature is just available in android , iOS apps are supposed cant close themselves')
+          return;
         }
+        BackHandler.exitApp();
       }} style={[header_styles.button, { alignItems: 'flex-start' }]} onPress={onLeftButtonPress}>
         <MedText style={header_styles.buttonText}>Back</MedText>
       </TouchableOpacity>
