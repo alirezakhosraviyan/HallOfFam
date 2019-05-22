@@ -20,6 +20,9 @@ export const Header =  ({ onLeftButtonPress, title, onRightButtonPress}) => {
     <View style={header_styles.leftContainer}>
       <TouchableOpacity onLongPress={()=>{
         BackHandler.exitApp();
+        if(Platform.OS === 'ios'){
+          console.warn('This feature is just available in android , iOS apps are supposed cant close themselves')
+        }
       }} style={[header_styles.button, { alignItems: 'flex-start' }]} onPress={onLeftButtonPress}>
         <MedText style={header_styles.buttonText}>Back</MedText>
       </TouchableOpacity>
