@@ -1,3 +1,8 @@
+/*
+navigation map to dispatch between welcome and hallOFFams
+
+*/
+
 import {createStackNavigator} from 'react-navigation';
 import WelcomeCont from '../../components/welcome/container/welcomeCont';
 import HallOfFamListCont from '../../components/hallOfFamList/container/hallOfFamCont';

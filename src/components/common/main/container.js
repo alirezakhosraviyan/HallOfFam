@@ -1,14 +1,16 @@
+/*
+General components to use for making pages
+
+Signed by alireza.infotech@gmail.com
+ *  */
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Platform} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Platform, BackHandler} from 'react-native';
 import {
-  widthPercentageToDP as wp,
   heightPercentageToDP as hp,
-  listenOrientationChange as lor,
-  removeOrientationListener as rol
 } from 'react-native-responsive-screen';
 
 import {LargeText, MedText} from "../text";
-import {MEDIUM, SMALL} from "../../../api/constants/sizes";
+import {SMALL} from "../../../api/constants/sizes";
 import {LIGHT_PRIMARY, PRIMARY, PRIMARY_TEXT_COLOR, WHITE} from "../../../api/constants/colors";
 
 
@@ -16,14 +18,16 @@ export const Header =  ({ onLeftButtonPress, title, onRightButtonPress}) => {
   return(
   <View style={header_styles.mainContainer}>
     <View style={header_styles.leftContainer}>
-      <TouchableOpacity style={[header_styles.button, { alignItems: 'flex-start' }]} onPress={onLeftButtonPress}>
+      <TouchableOpacity onLongPress={()=>{
+        BackHandler.exitApp();
+      }} style={[header_styles.button, { alignItems: 'flex-start' }]} onPress={onLeftButtonPress}>
         <MedText style={header_styles.buttonText}>Back</MedText>
       </TouchableOpacity>
     </View>
     <View style={header_styles.centerContainer}><LargeText style={header_styles.title}>{title}</LargeText></View>
     <View style={header_styles.rightContainer}>
       <TouchableOpacity style={[header_styles.button, { alignItems: 'flex-end' }]} onPress={onRightButtonPress}>
-        <MedText style={header_styles.buttonText}>Back</MedText>
+        <MedText style={header_styles.buttonText}>Forward</MedText>
       </TouchableOpacity>
     </View>
 
