@@ -42,14 +42,6 @@ export default class HallOfFam extends Component {
     }
   }
 
-  shouldComponentUpdate(newProps) {
-
-    //checks to avoid unnecessary updates
-    if (this.props.hallOfFams === newProps.hallOfFams)
-      return false;
-    return true
-  }
-
   render() {
     return (
         <View>
