@@ -44,8 +44,8 @@ export default class welcomeComponent extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(()=>this.setState({selected_gif : (this.state.selected_gif)%5 }),
-        6000)
+    this.interval = setInterval(()=>this.setState({selected_gif : (this.state.selected_gif+1)%5 }),
+        3000)
   }
 
   componentWillUnmount() {

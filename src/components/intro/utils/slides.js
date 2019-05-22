@@ -1,3 +1,6 @@
+/*
+* predefined slides for introduction
+* */
 import styles from '../styles/main';
 
 const slides = [

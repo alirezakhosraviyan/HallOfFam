@@ -1,3 +1,9 @@
+/*
+TextInput component in different sizes to use for making pages
+
+Signed by alireza.infotech@gmail.com
+ *  */
+
 import React from 'react';
 import { TextInput } from "react-native";
 import { MEDIUM, LARGE, SMALL } from '../../api/constants/sizes';
